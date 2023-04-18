@@ -31,7 +31,7 @@ const Nav = styled.nav`
     justify-content: center;
     align-items: center;
     font-size: ${({ theme }) => theme.fontSize.xxl};
-    background: ${({ theme }) => theme.colors.orange};
+    background: ${({ theme }) => theme.colors.yellow};
     font-weight: bold;
     color: ${({ theme }) => theme.colors.white};
 `;
@@ -41,7 +41,7 @@ const Link = styled.a`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.black};
 `;
 
 const Container = styled.div`
