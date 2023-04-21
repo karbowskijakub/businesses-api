@@ -1,21 +1,42 @@
 import React from "react";
 import styled from "styled-components";
+import {
+    FormControl,
+    InputLabel,
+    Select,
+    Input,
+    MenuItem,
+    SelectChangeEvent,
+} from "@mui/material";
 const Form = () => {
+    const [age, setAge] = React.useState("");
+
+    const handleChange = (event: SelectChangeEvent) => {
+        setAge(event.target.value as string);
+    };
     return (
         <FormBox>
-            <FormInput>
+            <FormInput sx={{ m: 1 }}>
+                <InputLabel htmlFor="my-input">
+                    Search your favourtie restaurant!
+                </InputLabel>
                 <Input
-                    type="text"
-                    id="search"
-                    placeholder="Search your favourite restaurant!"
-                ></Input>
+                    id="outlined-required"
+                    aria-describedby="my-helper-text"
+                />
             </FormInput>
-            <FormSelect>
-                <Select name="Filter" id="filter">
-                    <Option value="">Filter</Option>
-                    <Option value="">Popularity</Option>
-                    <Option value="">Low price</Option>
-                    <Option value="">High price</Option>
+            <FormSelect sx={{ m: 1 }}>
+                <InputLabel id="demo-simple-select-label">Filter</InputLabel>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    label="Age"
+                    value={age}
+                    onChange={handleChange}
+                >
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
                 </Select>
             </FormSelect>
         </FormBox>
@@ -24,32 +45,15 @@ const Form = () => {
 
 export default Form;
 
-const FormInput = styled.form`
+const FormInput = styled(FormControl)`
     z-index: 5;
-    width: 80%;
-    margin: 0 0.5em;
+    width: 60%;
 `;
-const FormSelect = styled.form`
+const FormSelect = styled(FormControl)`
     z-index: 5;
     width: 20%;
-    margin: 0 0.5em;
 `;
-const Input = styled.input`
-    width: 100%;
-    border-radius: 5px;
-    border: none;
-    height: 4em;
-    outline: none;
-    ::placeholder {
-        padding: 0.5em;
-    }
-`;
-const Select = styled.select`
-    height: 4em;
-    border-radius: 5px;
-    outline: none;
-    width: 100%;
-`;
+
 const FormBox = styled.div`
     height: 3em;
     border-radius: 5px;
@@ -60,5 +64,5 @@ const FormBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    background: white;
 `;
-const Option = styled.option``;
