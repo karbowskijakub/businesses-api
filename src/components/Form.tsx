@@ -8,6 +8,8 @@ import {
     MenuItem,
     SelectChangeEvent,
 } from "@mui/material";
+import breakpoints from "../assets/breakpoints/breakpoints";
+
 const Form = () => {
     const [age, setAge] = React.useState("");
 
@@ -17,9 +19,7 @@ const Form = () => {
     return (
         <FormBox>
             <FormInput sx={{ m: 1 }}>
-                <InputLabel htmlFor="my-input">
-                    Search your favourtie restaurant!
-                </InputLabel>
+                <Label htmlFor="my-input">Search restaurant!</Label>
                 <Input
                     id="outlined-required"
                     aria-describedby="my-helper-text"
@@ -47,11 +47,17 @@ export default Form;
 
 const FormInput = styled(FormControl)`
     z-index: 5;
-    width: 60%;
+    width: 90%;
+    @media only screen and ${breakpoints.device.xs} {
+        width: 60%;
+    }
 `;
 const FormSelect = styled(FormControl)`
     z-index: 5;
-    width: 20%;
+    width: 90%;
+    @media only screen and ${breakpoints.device.xs} {
+        width: 30%;
+    }
 `;
 
 const FormBox = styled.div`
@@ -59,10 +65,17 @@ const FormBox = styled.div`
     border-radius: 5px;
     outline: none;
     width: 1000px;
-    height: 20%;
+    height: 30%;
     z-index: 5;
     display: flex;
     align-items: center;
     justify-content: center;
     background: white;
+    flex-direction: column;
+    @media only screen and ${breakpoints.device.xs} {
+        flex-direction: row;
+    }
+`;
+const Label = styled(InputLabel)`
+    font-size: ${({ theme }) => theme.fontSize.l};
 `;

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import data from "../utils/nav-links";
+import breakpoints from "../assets/breakpoints/breakpoints";
 
 const Navbar = () => {
     return (
@@ -42,6 +43,13 @@ const Link = styled.a`
     justify-content: center;
     align-items: center;
     color: ${({ theme }) => theme.colors.black};
+    font-size: ${({ theme }) => theme.fontSize.xl};
+    @media only screen and ${breakpoints.device.xs} {
+        font-size: ${({ theme }) => theme.fontSize.xxl};
+    }
+    @media only screen and ${breakpoints.device.xl} {
+        font-size: ${({ theme }) => theme.fontSize.xxxl};
+    }
 `;
 
 const Container = styled.div`

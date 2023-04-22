@@ -6,7 +6,7 @@ const size = {
     md: "992px",
     lg: "1200px",
     lgx: "1280px",
-    xl: "1400px",
+    xl: "1700px",
 };
 const device = {
     xxxs: `(min-width: ${size.xxxs})`,
