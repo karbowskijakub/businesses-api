@@ -8,7 +8,6 @@ interface Props {
     businessData: Business;
 }
 const Card = ({ businessData }: Props) => {
-    console.log(businessData);
     const { name, location, rating, categories, image_url } = businessData;
     return (
         <CardElement>

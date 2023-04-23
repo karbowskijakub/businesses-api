@@ -1,31 +1,14 @@
 import styled from "styled-components";
 import Card from "../components/Card";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Business } from "../api-service/mock-business";
 import breakpoints from "../assets/breakpoints/breakpoints";
 
-const RestaurantsSection: React.FC = () => {
-    const [businesses, setBusinesses] = useState<Business[]>([]);
+interface RestaurantsSectionProps {
+    businesses: Business[];
+}
 
-    const options = {
-        method: "GET",
-        headers: {
-            accept: "application/json",
-            "Access-Control-Allow-Origin": "*",
-            Authorization: `Bearer ${process.env.REACT_APP_YELP_API_KEY}`,
-        },
-    };
-
-    useEffect(() => {
-        fetch(
-            "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Wroclaw&sort_by=best_match&limit=20",
-            options
-        )
-            .then((response) => response.json())
-            .then((response) => setBusinesses(response.businesses))
-            .catch((err) => console.error(err));
-    }, []);
-
+const RestaurantsSection = ({ businesses }: RestaurantsSectionProps) => {
     return (
         <>
             <Container>

@@ -15,5 +15,10 @@ body {
 a, button {
   font-family: 'Montserrat', sans-serif;
 }
+::-webkit-scrollbar {
+  width: 0px;
+  background-color: none;
+}
+
 `;
 export default GlobalStyles;
