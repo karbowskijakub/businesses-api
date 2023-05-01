@@ -10,7 +10,7 @@ interface logoLink {
 
 const data: logoLink[] = [
     {
-        name: "Restaurants-api",
+        name: "Businesses-api",
         icon: <CiBurger />,
         path: "/",
         id: 12,

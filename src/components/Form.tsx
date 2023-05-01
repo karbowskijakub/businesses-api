@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import {
     FormControl,
@@ -9,24 +9,37 @@ import {
     SelectChangeEvent,
 } from "@mui/material";
 import breakpoints from "../assets/breakpoints/breakpoints";
+import { CategoryType, categories } from "../api-service/useSearchBusinesses";
+import { BusinessContext } from "../providers/BusinessContext";
 
 const Form = () => {
+    const { setBusinessesName } = useContext(BusinessContext);
+
     const [age, setAge] = React.useState("");
 
     const handleChange = (event: SelectChangeEvent) => {
         setAge(event.target.value as string);
     };
+    const handleBusinessChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const value = event.target.value;
+        if (categories.includes(value as CategoryType)) {
+            setBusinessesName(value as CategoryType);
+        }
+    };
     return (
         <FormBox>
             <FormInput sx={{ m: 1 }}>
-                <Label htmlFor="my-input">Search restaurant!</Label>
+                <Label htmlFor="my-input">Search businesses!</Label>
                 <Input
                     id="outlined-required"
                     aria-describedby="my-helper-text"
+                    onChange={handleBusinessChange}
                 />
             </FormInput>
             <FormSelect sx={{ m: 1 }}>
-                <InputLabel id="demo-simple-select-label">Filter</InputLabel>
+                <InputLabel id="demo-simple-select-label">Near</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -34,9 +47,16 @@ const Form = () => {
                     value={age}
                     onChange={handleChange}
                 >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    <MenuItem value={10}>Białystok</MenuItem>
+                    <MenuItem value={20}>Bydgoszcz</MenuItem>
+                    <MenuItem value={30}>Gdańsk</MenuItem>
+                    <MenuItem value={40}>Katowice</MenuItem>
+                    <MenuItem value={50}>Kraków</MenuItem>
+                    <MenuItem value={60}>Łódź</MenuItem>
+                    <MenuItem value={70}>Lublin</MenuItem>
+                    <MenuItem value={80}>Poznań</MenuItem>
+                    <MenuItem value={90}>Szczecin</MenuItem>
+                    <MenuItem value={100}>Warszawa</MenuItem>
                 </Select>
             </FormSelect>
         </FormBox>

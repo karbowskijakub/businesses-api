@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Business } from "./api-service/mock-business";
 import GlobalStyles from "./assets/styles/globalStyles";
 import { ThemeProvider } from "styled-components";
@@ -8,24 +8,31 @@ import Header from "./layout/Header";
 import RestaurantsSection from "./layout/RestaurantsSection";
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import getData from "./api-service/get-data";
-import { useSearchBusinesses } from "./api-service/useSearchBusinesses";
+import {
+    CategoryType,
+    useSearchBusinesses,
+} from "./api-service/useSearchBusinesses";
+import { BusinessProvider, BusinessContext } from "./providers/BusinessContext";
 
 const queryClient = new QueryClient();
 
 const App = () => {
     return (
         <QueryClientProvider client={queryClient}>
-            <Main />
+            <BusinessProvider>
+                <Main />
+            </BusinessProvider>
         </QueryClientProvider>
     );
 };
 
 const Main = () => {
-    const [businesses, setBusinesses] = useState<Business[]>([]);
-
+    const { businessesName, businesses, setBusinesses } =
+        useContext(BusinessContext);
     const { isLoading, error, data } = useSearchBusinesses({
-        location: "Lodz",
-        sort_by: "best_match",
+        // location: "Lodz",
+        // sort_by: "rating",
+        categories: businessesName ?? "restaurants",
     });
     useEffect(() => {
         data && setBusinesses(data.businesses);

@@ -2,6 +2,8 @@ import React from "react";
 import logo from "../assets/images/restaurant.jpg";
 import styled from "styled-components";
 import Form from "../components/Form";
+import { CategoryType } from "../api-service/useSearchBusinesses";
+
 const Header = () => {
     return (
         <Container>

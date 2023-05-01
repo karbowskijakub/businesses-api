@@ -50,6 +50,7 @@ export const mockApiResponse: Business[] = [
                 title: "Coffee & Tea",
             },
         ],
+
         review_count: 1738,
         name: "Four Barrel Coffee",
         url: "https://www.yelp.com/biz/four-barrel-coffee-san-francisco",
