@@ -13,13 +13,11 @@ import { CategoryType, categories } from "../api-service/useSearchBusinesses";
 import { BusinessContext } from "../providers/BusinessContext";
 
 const Form = () => {
-    const { setBusinessesName } = useContext(BusinessContext);
+    const { setBusinessesName, setLocation, location } =
+        useContext(BusinessContext);
 
     const [age, setAge] = React.useState("");
 
-    const handleChange = (event: SelectChangeEvent) => {
-        setAge(event.target.value as string);
-    };
     const handleBusinessChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
@@ -28,6 +26,45 @@ const Form = () => {
             setBusinessesName(value as CategoryType);
         }
     };
+
+    const handleOptionChange = (event: SelectChangeEvent) => {
+        const selectedOption = event.target.value as string;
+        switch (selectedOption) {
+            case "Białystok":
+                setLocation("Białystok");
+                break;
+            case "Bydgoszcz":
+                setLocation("Bydgoszcz");
+                break;
+            case "Gdańsk":
+                setLocation("Gdańsk");
+                break;
+            case "Katowice":
+                setLocation("Katowice");
+                break;
+            case "Kraków":
+                setLocation("Kraków");
+                break;
+            case "Łódź":
+                setLocation("Łódź");
+                break;
+            case "Lublin":
+                setLocation("Lublin");
+                break;
+            case "Poznań":
+                setLocation("Poznań");
+                break;
+            case "Szczecin":
+                setLocation("Szczecin");
+                break;
+            case "Warszawa":
+                setLocation("Warszawa");
+                break;
+            default:
+                setLocation("");
+        }
+    };
+
     return (
         <FormBox>
             <FormInput sx={{ m: 1 }}>
@@ -42,21 +79,20 @@ const Form = () => {
                 <InputLabel id="demo-simple-select-label">Near</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    label="Age"
-                    value={age}
-                    onChange={handleChange}
+                    label="Near"
+                    value={location}
+                    onChange={handleOptionChange}
                 >
-                    <MenuItem value={10}>Białystok</MenuItem>
-                    <MenuItem value={20}>Bydgoszcz</MenuItem>
-                    <MenuItem value={30}>Gdańsk</MenuItem>
-                    <MenuItem value={40}>Katowice</MenuItem>
-                    <MenuItem value={50}>Kraków</MenuItem>
-                    <MenuItem value={60}>Łódź</MenuItem>
-                    <MenuItem value={70}>Lublin</MenuItem>
-                    <MenuItem value={80}>Poznań</MenuItem>
-                    <MenuItem value={90}>Szczecin</MenuItem>
-                    <MenuItem value={100}>Warszawa</MenuItem>
+                    <MenuItem value="Białystok">Białystok</MenuItem>
+                    <MenuItem value="Bydgoszcz">Bydgoszcz</MenuItem>
+                    <MenuItem value="Gdańsk">Gdańsk</MenuItem>
+                    <MenuItem value="Katowice">Katowice</MenuItem>
+                    <MenuItem value="Kraków">Kraków</MenuItem>
+                    <MenuItem value="Łódź">Łódź</MenuItem>
+                    <MenuItem value="Lublin">Lublin</MenuItem>
+                    <MenuItem value="Poznań">Poznań</MenuItem>
+                    <MenuItem value="Szczecin">Szczecin</MenuItem>
+                    <MenuItem value="Warszawa">Warszawa</MenuItem>
                 </Select>
             </FormSelect>
         </FormBox>

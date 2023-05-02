@@ -22,11 +22,6 @@ interface SearchParams {
     term?: string;
     categories?: CategoryType;
 }
-// const parseMinMax = (value: number, min: number, max: number): string => {
-//     if (value > max) return min.toFixed(0);
-//     if (value > 50) return max.toFixed(0);
-//     else return value.toFixed(0);
-// };
 
 function removeEmpty(obj: Record<any, any>): Record<string, string> {
     return Object.fromEntries(
@@ -37,7 +32,7 @@ function removeEmpty(obj: Record<any, any>): Record<string, string> {
 export const useSearchBusinesses = (searchParams?: SearchParams) => {
     const {
         name,
-        location = "Lodz",
+        location = "Polska",
         latitude,
         longitude,
         sort_by = "best_match",

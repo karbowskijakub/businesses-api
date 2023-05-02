@@ -7,6 +7,8 @@ type BusinessContextType = {
     setBusinessesName: (value: CategoryType) => void;
     businesses: Business[];
     setBusinesses: (value: Business[]) => void;
+    location: string;
+    setLocation: (value: string) => void;
 };
 
 export const BusinessContext = createContext<BusinessContextType>({
@@ -18,6 +20,10 @@ export const BusinessContext = createContext<BusinessContextType>({
     setBusinesses: () => {
         console.warn("setBusinesses is not implemented");
     },
+    location: "",
+    setLocation: () => {
+        console.warn("setLocation is not implemented");
+    },
 });
 
 type BusinessProviderProps = {
@@ -28,7 +34,7 @@ export const BusinessProvider = ({ children }: BusinessProviderProps) => {
     const [businessesName, setBusinessesName] =
         useState<CategoryType>("restaurants");
     const [businesses, setBusinesses] = useState<Business[]>([]);
-
+    const [location, setLocation] = useState<string>("");
     return (
         <BusinessContext.Provider
             value={{
@@ -36,6 +42,8 @@ export const BusinessProvider = ({ children }: BusinessProviderProps) => {
                 setBusinessesName,
                 businesses,
                 setBusinesses,
+                location,
+                setLocation,
             }}
         >
             {children}
