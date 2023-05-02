@@ -24,15 +24,24 @@ const App = () => {
 const Main = () => {
     const { businessesName, businesses, setBusinesses, location } =
         useContext(BusinessContext);
-    const { isLoading, error, data } = useSearchBusinesses({
+    const { isLoading, error, data, refetch } = useSearchBusinesses({
         location: location ? location : "Polska",
         // sort_by: "rating",
         categories: businessesName ?? "restaurants",
     });
     useEffect(() => {
+        refetch(); // refetch data when location changes
+    }, [location]);
+
+    useEffect(() => {
+        refetch(); // refetch data when location changes
+    }, [businessesName]);
+
+    useEffect(() => {
         data && setBusinesses(data.businesses);
     }, [data]);
     console.log(location);
+
     return (
         <>
             <ThemeProvider theme={theme}>
