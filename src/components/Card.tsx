@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
 import { Business } from "../api-service/mock-business";
 import breakpoints from "../assets/breakpoints/breakpoints";
+import defaultImage from "../assets/images/defaultImage.jpg";
 
 interface Props {
     businessData: Business;
@@ -12,7 +13,7 @@ const Card = ({ businessData }: Props) => {
     return (
         <CardElement>
             <ImageContainer>
-                <Img src={image_url}></Img>
+                <Img src={image_url || defaultImage}></Img>
             </ImageContainer>
             <TextContainer>
                 <TitleContainer>
@@ -52,7 +53,7 @@ const CardElement = styled.div`
         height: 280px;
     }
     @media only screen and ${breakpoints.device.xl} {
-        height: 340px;
+        height: 400px;
     }
 `;
 

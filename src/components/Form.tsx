@@ -16,8 +16,6 @@ const Form = () => {
     const { setBusinessesName, setLocation, location } =
         useContext(BusinessContext);
 
-    const [age, setAge] = React.useState("");
-
     const handleBusinessChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
@@ -69,7 +67,7 @@ const Form = () => {
         <FormBox>
             <FormInput sx={{ m: 1 }}>
                 <Label htmlFor="my-input">Search businesses!</Label>
-                <Input
+                <InputForm
                     id="outlined-required"
                     aria-describedby="my-helper-text"
                     onChange={handleBusinessChange}
@@ -101,11 +99,24 @@ const Form = () => {
 
 export default Form;
 
+const InputForm = styled(Input)``;
+
 const FormInput = styled(FormControl)`
     z-index: 5;
     width: 90%;
     @media only screen and ${breakpoints.device.xs} {
         width: 60%;
+    }
+
+    & label.Mui-focused {
+        color: ${({ theme }) => theme.colors.black};
+    }
+
+    & .MuiInput-underline::before {
+        border-color: ${({ theme }) => theme.colors.black};
+    }
+    & .MuiInput-underline::after {
+        border-color: ${({ theme }) => theme.colors.black};
     }
 `;
 const FormSelect = styled(FormControl)`
@@ -113,6 +124,15 @@ const FormSelect = styled(FormControl)`
     width: 90%;
     @media only screen and ${breakpoints.device.xs} {
         width: 30%;
+    }
+    & label.Mui-focused {
+        color: ${({ theme }) => theme.colors.black};
+    }
+    & .MuiOutlinedInput-notchedOutline {
+        border-color: ${({ theme }) => theme.colors.black};
+    }
+    & .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+        border-color: ${({ theme }) => theme.colors.black};
     }
 `;
 

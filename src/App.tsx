@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "../src/assets/styles/theme";
 import Navbar from "./layout/Navbar";
 import Header from "./layout/Header";
+import Footer from "./layout/Footer";
 import RestaurantsSection from "./layout/RestaurantsSection";
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import { useSearchBusinesses } from "./api-service/useSearchBusinesses";
@@ -40,7 +41,6 @@ const Main = () => {
     useEffect(() => {
         data && setBusinesses(data.businesses);
     }, [data]);
-    console.log(location);
 
     return (
         <>
@@ -53,6 +53,7 @@ const Main = () => {
                     {error && "error"}
                     <RestaurantsSection businesses={businesses} />
                 </>
+                <Footer />
             </ThemeProvider>
         </>
     );

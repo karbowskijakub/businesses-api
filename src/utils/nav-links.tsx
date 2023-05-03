@@ -1,5 +1,5 @@
 import React from "react";
-import { CiBurger } from "react-icons/ci";
+import { MdBusiness } from "react-icons/md";
 
 interface logoLink {
     name: string;
@@ -11,7 +11,7 @@ interface logoLink {
 const data: logoLink[] = [
     {
         name: "Businesses-api",
-        icon: <CiBurger />,
+        icon: <MdBusiness />,
         path: "/",
         id: 12,
     },

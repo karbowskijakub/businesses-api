@@ -5,7 +5,7 @@ export const categories = [
     "auto",
     "homeservices",
     "spas",
-    "handyman",
+    "health",
     "restaurants",
     "pubs",
 ] as const;
